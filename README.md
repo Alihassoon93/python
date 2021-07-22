@@ -1,2 +1,2 @@
 # python
-Python Projects and Scripts  
+Python Projects, Scripts and SQL commands
