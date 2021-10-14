@@ -1,3 +1,8 @@
+import turtle 
+
+
+pen = turtle.Turtle()
+
 def draw_triangle(length):
   pen.setheading(180)
   for i in range(3):
