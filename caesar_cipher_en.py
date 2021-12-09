@@ -3,15 +3,9 @@ class CaesarCipher():
 
 	def __init__(self, shift):
 		"""Construct Caesar cipher using given integer shift for rotation."""
-
-		encoder = [None] * 26
-		decoder = [None] * 26
-
-		for k in range(26):
-			encoder[k] = chr((k + shift) % 26 + ord('A'))
-			decoder[k] = chr((k - shift) % 26 + ord('A'))
-		self._forward = ''.join(encoder)
-		self._backward = ''.join(decoder)
+		
+ 		self._forward = ' '.join(chr((k + shift) % 26 + ord('A')) for k in range(26))
+  		self._backward = ' '.join(chr((k - shift) % 26 + ord('A')) for k in range(26))
 
 
 	def encrypt(self, message):
