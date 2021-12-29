@@ -11,7 +11,7 @@ def get_max_num_of_times_substring (string, sub):
     #sub: at
 
 
-    ans = [0] * len(string) # initializing an arry zeros in teh length of string
+    ans = [0] * len(string) # initializing an arry zeros in the length of string
     for i in range(len(string) - len(sub), -1 , -1 ): # for (int i = strlen(string), strlen(sub); i > -1; i--)
         if string[i: i + len(sub)] == sub:    # the base case if when sub accur in the beginning we dont want tp cross teh string boundary
                  if i + len(sub) > len(string) - 1:
