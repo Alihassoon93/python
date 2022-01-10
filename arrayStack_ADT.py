@@ -3,6 +3,8 @@ class Empty(Exception):
 
 
 class ArrayStack:
+  """LIFO Stack implementation using a Python list as underlying storage."""
+  
   def __init__(self):
     self._data = []
 
