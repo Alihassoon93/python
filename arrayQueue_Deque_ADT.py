@@ -102,3 +102,90 @@ q.dequeue()
 print(q.first())
 print(q.is_empty())
 print(q)
+
+
+
+# double-ended queue
+class ArrayDeque(ArrayQueue):
+
+  def __init__(self):
+  	super().__init__()
+
+
+  def last(self):
+    """ Return (but do not remove) the element at the end of the deque.
+
+      Raise Empty exception if the queue is empty
+    """
+    if self.is_empty():
+      raise Empty("Queue is Empty")
+    
+    return self._data[(self._front + self._size - 1)%len(self._data)]  
+
+
+  def add_first(self, e):
+  	""" Add an element at the front of the deque """
+
+  	if self._size == len(self._data):
+  		self._resize(2 * len(self._data))
+
+  	self._front = (self._front -1) % len(self._data)
+  	self._data[self._front] = e
+  	self._size += 1    
+
+	
+  def add_last(self, e):
+  	"""Add an element at the back of the deque """
+
+  	return self.enqueue(e)
+
+
+  def delete_first(self):
+    """Remove and return the first element of the deque.
+
+       Raise Empty exception if the deque is empty.
+     """
+    return self.dequeue()
+
+
+  def delete_last(self):
+    """similar to delete first but at end of deque"""
+
+    if self.is_empty():
+      raise Empty('Queue is empty')
+
+    back = (self._front + self._size - 1) % len(self._data)
+    last_el = self._data[back]
+    self._data[back] = None
+    self._size -= 1
+
+    if 0 < self._size < len(self._data) // 4:
+      self._resize(len(self._data) // 2)
+
+    return last_el
+
+
+
+
+
+D = ArrayDeque()
+
+D.add_last(4)
+D.add_last(5)
+D.add_last(6)
+D.add_first(3)
+D.add_first(2)
+D.add_first(1)
+
+
+print(D)
+
+print(D.first())
+print(D.last())
+D.add_last(7)
+print(D)
+print(D.last())
+D.delete_first()
+print(D)
+D.delete_last()
+print(D)
